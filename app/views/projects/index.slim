@@ -1,10 +1,12 @@
-h4 #{@counted_tiers} tiers found 
-p = @text_tiers
+- if @response_code == 200
+  h4 #{@counted_tiers} tiers found in app-ideas repo.
+  p = @text_tiers
 
-= form_with(url: load_projects_projects_path(tiers: @all_tiers), method: "post", data: { turbo: false }) do |f|
-  .input-group.mb-3
-    .input-group-prepend
-      .input-group-text Load/Update Projects
-    = f.submit 'Let\'s go!', class: 'btn btn-primary'
-
+  = form_with(url: load_projects_projects_path(tiers: @all_tiers), method: "post", data: { turbo: false }) do |f|
+    .input-group.mb-3
+      .input-group-prepend
+        .input-group-text Load/Update Projects
+      = f.submit 'Let\'s go!', class: 'btn btn-primary'
+- else 
+  h4 = @text_tiers
 p.text-muted #{@stored_projects} projects loaded
