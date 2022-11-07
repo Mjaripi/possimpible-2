@@ -1,1 +1,10 @@
-h4 = @found_tiers
+h4 #{@counted_tiers} tiers found 
+p = @text_tiers
+
+= form_with(url: load_projects_projects_path(tiers: @all_tiers), method: "post", data: { turbo: false }) do |f|
+  .input-group.mb-3
+    .input-group-prepend
+      .input-group-text Load/Update Projects
+    = f.submit 'Let\'s go!', class: 'btn btn-primary'
+
+p.text-muted #{@stored_projects} projects loaded
